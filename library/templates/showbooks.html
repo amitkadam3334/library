@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ALL BOOKS</title>
+<style>
+table {
+	background-color: #f1f1f1;
+	border-collapse: collapse;
+	border: 1px solid black;
+	text-align: center;
+}
+
+td {
+	height: 40px;
+	width: 250px;
+}
+
+a {
+	text-align: center;
+}
+
+button {
+	width: 170px;
+	height: 30px;
+	margin: 10px;
+	border-radius: 20px;
+}
+
+button:hover {
+	width: 170px;
+	height: 30px;
+	margin: 10px;
+	border-radius: 20px;
+	background: linear-gradient(#e66465, #9198e5);
+	color: white;
+}
+</style>
+</head>
+<body style='background: linear-gradient(#e66465, #9198e5)'>
+	<h1 align="center" style="color: white">Books Data</h1>
+	<hr>
+	<br>
+	<br>
+
+	<div style="text-align: -webkit-center;">
+		{% for message in messages %}
+				<div class= "alert alert-{{message.tags}} alert-dismissible fade show" role= "alert"}>
+				<strong >message :</strong>{{message}}
+				<button type="button" class = "close" data-dismiss ="alert" aria-label="close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>
+	{% endfor %}
+		<table border="1">
+			<tr>
+
+				<th>Id</th>
+				<th>Book name</th>
+				<th> Author Name</th>
+				<th> Publish Date</th>
+				<th>Delete</th>
+				<th>Update</th>
+			</tr>
+			{%for data in data %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{data.bookname}}</td>
+					<td>{{data.authorname}}</td>
+					<td>{{data.publishdate}}</td>
+
+
+					<td><a href="http://127.0.0.1:8000/delete/{{data.id}}"
+						style="padding-left: 28px">Delete</a></td>
+					<td><a href="http://127.0.0.1:8000/update"
+						style="padding-left: 28px">Update</a></td>
+				</tr>
+			{%endfor%}
+		</table>
+		<div style="margin-top: 30px;">
+			<a href="/index"><button type="button">Go to Dashboard</button></a>
+		</div>
+	</div>
+</body>
+</html>
